@@ -11,6 +11,7 @@ import com.gokalp.casgembootcamp.ins.dto.responses.InsInstructorGetResponse;
 import com.gokalp.casgembootcamp.ins.dto.responses.InsInstructorUpdateResponse;
 import com.gokalp.casgembootcamp.ins.entity.InsInstructor;
 import com.gokalp.casgembootcamp.ins.services.entityServices.InsInstructorEntityService;
+import com.gokalp.casgembootcamp.usr.dto.requests.UsrPasswordChangeRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +26,10 @@ import java.util.List;
 public class InsInstructorService {
     private final InsInstructorEntityService instructorEntityService;
 
-    public InsInstructorCreateResponse save(InsInstructorCreateRequest insInstructorCreateRequest){
-        validatePassword(insInstructorCreateRequest);
+    public InsInstructorCreateResponse save(InsInstructorCreateRequest instructorCreateRequest){
+        confirmPassword(instructorCreateRequest.getPassword(),instructorCreateRequest.getConfirmPassword());
         //todo national identity control
-        InsInstructor insInstructor = InsInstructorConverter.INSTANCE.convertToInsInstructor(insInstructorCreateRequest);
+        InsInstructor insInstructor = InsInstructorConverter.INSTANCE.convertToInsInstructor(instructorCreateRequest);
         insInstructor = instructorEntityService.save(insInstructor);
         return InsInstructorConverter.INSTANCE.convertToInsInstructorCreateResponse((insInstructor));
     }
@@ -58,8 +59,21 @@ public class InsInstructorService {
         instructorEntityService.delete(instructor);
     }
 
-    private static void validatePassword(InsInstructorCreateRequest insInstructorCreateRequest) {
-        if(!insInstructorCreateRequest.getPassword().equals(insInstructorCreateRequest.getConfirmPassword())){
+    public void changePassword(UsrPasswordChangeRequest passwordChangeRequest, Long id){
+        InsInstructor instructor = instructorEntityService.getByIdWithControl(id);
+        checkPassword(passwordChangeRequest, instructor);
+        confirmPassword(passwordChangeRequest.getNewPassword(), passwordChangeRequest.getConfirmNewPassword());
+        instructorEntityService.save(instructor);
+    }
+
+    private static void checkPassword(UsrPasswordChangeRequest passwordChangeRequest, InsInstructor instructor) {
+        if(!instructor.getPassword().equals(passwordChangeRequest.getOldPassword())){
+            throw new ValidationException(ValidationErrorMessage.OldPasswordNotMatch);
+        }
+    }
+
+    private static void confirmPassword(String password, String confirmPassword) {
+        if(!password.equals(confirmPassword)){
             throw new ValidationException(ValidationErrorMessage.ConfirmPasswordValid);
         }
     }

@@ -5,7 +5,8 @@ package com.gokalp.casgembootcamp.gen.enums;
  * @project casgem-bootcamp
  */
 public enum ValidationErrorMessage implements BaseErrorMessage{
-    ConfirmPasswordValid("Confirm password must be same with password")
+    ConfirmPasswordValid("Confirm password must be same with password"),
+    OldPasswordNotMatch("Old Password is not match");
     ;
 
     private String message;
