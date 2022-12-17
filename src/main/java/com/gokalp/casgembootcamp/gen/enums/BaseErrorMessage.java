@@ -5,6 +5,5 @@ package com.gokalp.casgembootcamp.gen.enums;
  * @project casgem-bootcamp
  */
 public interface BaseErrorMessage {
-
     String getMessage();
 }

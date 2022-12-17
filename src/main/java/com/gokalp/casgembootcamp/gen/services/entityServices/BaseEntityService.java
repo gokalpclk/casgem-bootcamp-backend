@@ -24,36 +24,38 @@ import java.util.Optional;
 public abstract class BaseEntityService<E extends BaseEntity, D extends JpaRepository> {
     private final D dao;
 
-    public List<E> findAll(){
+    public List<E> findAll() {
         return dao.findAll();
     }
-    public Optional<E> findById(Long id){
+
+    public Optional<E> findById(Long id) {
         return dao.findById(id);
     }
 
-    public E save(E entity){
-        return  (E)dao.save(entity);
+    public E save(E entity) {
+        return (E) dao.save(entity);
     }
 
-    public void delete(E e){
+    public void delete(E e) {
         dao.delete(e);
     }
 
 
-    public E getByIdWithControl(Long id){
+    public E getByIdWithControl(Long id) {
         Optional<E> entityOptional = findById(id);
 
         E entity;
 
-        if(entityOptional.isPresent()){
-            entity=entityOptional.get();
-        }else {
+        if (entityOptional.isPresent()) {
+            entity = entityOptional.get();
+        } else {
             throw new ItemNotFoundException(GenErrorMessage.ITEM_NOTFOUND);
         }
+
         return entity;
     }
 
-    public boolean existById(Long id){
+    public boolean existById(Long id) {
         return dao.existsById(id);
     }
 
@@ -81,7 +83,7 @@ public abstract class BaseEntityService<E extends BaseEntity, D extends JpaRepos
         return currentCustomerId;
     }
 
-    public JpaRepository getDao(){
+    public JpaRepository getDao() {
         return dao;
     }
 }

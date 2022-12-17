@@ -17,12 +17,14 @@ public enum GenErrorMessage implements BaseErrorMessage {
         this.message = message;
     }
 
-    public String getMessage(){
+
+    @Override
+    public String toString() {
         return message;
     }
 
     @Override
-    public String toString() {
+    public String getMessage() {
         return message;
     }
 }
