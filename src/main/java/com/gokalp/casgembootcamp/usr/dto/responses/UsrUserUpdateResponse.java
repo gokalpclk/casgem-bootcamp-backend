@@ -5,20 +5,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.util.Date;
 
 /**
- * @author Gokalp on 16.12.2022
+ * @author Gokalp on 17.12.2022
  * @project casgem-bootcamp
  */
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsrUserGetAllResponse {
+public class UsrUserUpdateResponse {
 
 	private Long id;
 
@@ -33,5 +30,7 @@ public class UsrUserGetAllResponse {
 	private String email;
 
 	private String password;
+
+	private String confirmPassword;
 
 }

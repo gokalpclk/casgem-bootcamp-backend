@@ -5,5 +5,7 @@ package com.gokalp.casgembootcamp.gen.entity;
  * @project casgem-bootcamp
  */
 public interface BaseModel {
-    Long getId();
+
+	Long getId();
+
 }

@@ -20,19 +20,21 @@ import java.util.Date;
 @Setter
 @Getter
 public class BaseAdditionalFields {
-    @Column(name = "created_date")
-    @CreatedDate
-    private Date createDate;
 
-    @Column(name = "update_date")
-    @LastModifiedDate
-    private Date updateDate;
+	@Column(name = "created_date")
+	@CreatedDate
+	private Date createDate;
 
-    @Column(name = "created_by")
-    @CreatedBy
-    private Long createdBy;
+	@Column(name = "update_date")
+	@LastModifiedDate
+	private Date updateDate;
 
-    @Column(name = "updated_by")
-    @LastModifiedBy
-    private Long updatedBy;
+	@Column(name = "created_by")
+	@CreatedBy
+	private Long createdBy;
+
+	@Column(name = "updated_by")
+	@LastModifiedBy
+	private Long updatedBy;
+
 }

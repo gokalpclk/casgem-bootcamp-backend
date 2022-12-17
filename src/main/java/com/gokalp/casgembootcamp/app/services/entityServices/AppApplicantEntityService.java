@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AppApplicantEntityService extends BaseEntityService<AppApplicant, AppApplicantDao> {
-    public AppApplicantEntityService(AppApplicantDao dao) {
-        super(dao);
-    }
+
+	public AppApplicantEntityService(AppApplicantDao dao) {
+		super(dao);
+	}
+
 }

@@ -10,7 +10,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @project casgem-bootcamp
  */
 public class BlaBlackListEntityService extends BaseEntityService<BlaBlacklist, BlaBlacklistDao> {
-    public BlaBlackListEntityService(BlaBlacklistDao dao) {
-        super(dao);
-    }
+
+	public BlaBlackListEntityService(BlaBlacklistDao dao) {
+		super(dao);
+	}
+
 }

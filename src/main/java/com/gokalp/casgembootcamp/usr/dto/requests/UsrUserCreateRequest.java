@@ -21,18 +21,18 @@ import java.util.Date;
 @AllArgsConstructor
 public class UsrUserCreateRequest {
 
+	private String firstName;
 
-    private String firstName;
+	private String lastName;
 
-    private String lastName;
+	private Date dateOfBirth;
 
-    private Date dateOfBirth;
+	private String nationalIdentity;
 
-    private String nationalIdentity;
+	private String email;
 
-    private String email;
+	private String password;
 
-    private String password;
+	private String confirmPassword;
 
-    private String confirmPassword;
 }

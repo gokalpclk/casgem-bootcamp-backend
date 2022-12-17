@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @project casgem-bootcamp
  */
 public interface InsInstructorDao extends JpaRepository<InsInstructor, Long> {
+
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AppApplicantService {
-    private final AppApplicantEntityService appApplicantEntityService;
+
+	private final AppApplicantEntityService appApplicantEntityService;
 
 }

@@ -22,68 +22,70 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public abstract class BaseEntityService<E extends BaseEntity, D extends JpaRepository> {
-    private final D dao;
 
-    public List<E> findAll() {
-        return dao.findAll();
-    }
+	private final D dao;
 
-    public Optional<E> findById(Long id) {
-        return dao.findById(id);
-    }
+	public List<E> findAll() {
+		return dao.findAll();
+	}
 
-    public E save(E entity) {
-        return (E) dao.save(entity);
-    }
+	public Optional<E> findById(Long id) {
+		return dao.findById(id);
+	}
 
-    public void delete(E e) {
-        dao.delete(e);
-    }
+	public E save(E entity) {
+		return (E) dao.save(entity);
+	}
 
+	public void delete(E e) {
+		dao.delete(e);
+	}
 
-    public E getByIdWithControl(Long id) {
-        Optional<E> entityOptional = findById(id);
+	public E getByIdWithControl(Long id) {
+		Optional<E> entityOptional = findById(id);
 
-        E entity;
+		E entity;
 
-        if (entityOptional.isPresent()) {
-            entity = entityOptional.get();
-        } else {
-            throw new ItemNotFoundException(GenErrorMessage.ITEM_NOTFOUND);
-        }
+		if (entityOptional.isPresent()) {
+			entity = entityOptional.get();
+		}
+		else {
+			throw new ItemNotFoundException(GenErrorMessage.ITEM_NOTFOUND);
+		}
 
-        return entity;
-    }
+		return entity;
+	}
 
-    public boolean existById(Long id) {
-        return dao.existsById(id);
-    }
+	public boolean existById(Long id) {
+		return dao.existsById(id);
+	}
 
-    private void setAdditional(E entity) {
-        BaseAdditionalFields baseAdditionalFields = entity.getBaseAdditionalFields();
+	private void setAdditional(E entity) {
+		BaseAdditionalFields baseAdditionalFields = entity.getBaseAdditionalFields();
 
-        Long currentCustomerId = getCurrentCustomerId();
+		Long currentCustomerId = getCurrentCustomerId();
 
-        if (baseAdditionalFields == null) {
-            baseAdditionalFields = new BaseAdditionalFields();
-            entity.setBaseAdditionalFields(baseAdditionalFields);
-        }
-        if (entity.getId() == null) {
-            baseAdditionalFields.setCreateDate(new Date());
-            baseAdditionalFields.setCreatedBy(currentCustomerId);
-        }
+		if (baseAdditionalFields == null) {
+			baseAdditionalFields = new BaseAdditionalFields();
+			entity.setBaseAdditionalFields(baseAdditionalFields);
+		}
+		if (entity.getId() == null) {
+			baseAdditionalFields.setCreateDate(new Date());
+			baseAdditionalFields.setCreatedBy(currentCustomerId);
+		}
 
-        baseAdditionalFields.setUpdateDate(new Date());
-        baseAdditionalFields.setUpdatedBy(currentCustomerId);
-    }
+		baseAdditionalFields.setUpdateDate(new Date());
+		baseAdditionalFields.setUpdatedBy(currentCustomerId);
+	}
 
-    public Long getCurrentCustomerId() {
-        //todo jwt
-        Long currentCustomerId = null;
-        return currentCustomerId;
-    }
+	public Long getCurrentCustomerId() {
+		// todo jwt
+		Long currentCustomerId = null;
+		return currentCustomerId;
+	}
 
-    public JpaRepository getDao() {
-        return dao;
-    }
+	public JpaRepository getDao() {
+		return dao;
+	}
+
 }

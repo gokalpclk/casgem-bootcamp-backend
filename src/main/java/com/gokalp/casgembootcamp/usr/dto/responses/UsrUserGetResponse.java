@@ -19,15 +19,17 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UsrUserGetResponse {
-    private Long id;
 
-    private String firstName;
+	private Long id;
 
-    private String lastName;
+	private String firstName;
 
-    private Date dateOfBirth;
+	private String lastName;
 
-    private String nationalIdentity;
+	private Date dateOfBirth;
 
-    private String email;
+	private String nationalIdentity;
+
+	private String email;
+
 }

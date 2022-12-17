@@ -19,41 +19,43 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @RequestMapping("/api/v1/instructors")
 public class InsInstructorController {
-    private InsInstructorService instructorService;
 
-    @GetMapping
-    public ResponseEntity getAll(){
-        return ResponseEntity.ok(RestResponse.of( instructorService.getAll()));
-    }
+	private InsInstructorService instructorService;
 
-    @PostMapping
-    public ResponseEntity save(@RequestBody InsInstructorCreateRequest instructorCreateRequest){
-        return ResponseEntity.ok(RestResponse.of(instructorService.save(instructorCreateRequest)));
-    }
+	@GetMapping
+	public ResponseEntity getAll() {
+		return ResponseEntity.ok(RestResponse.of(instructorService.getAll()));
+	}
 
-    @GetMapping("/{id}")
-    public ResponseEntity getById(@PathVariable Long id){
-        InsInstructorGetResponse instructorGetResponse = instructorService.getById(id);
-        return ResponseEntity.ok(RestResponse.of(instructorGetResponse));
-    }
+	@PostMapping
+	public ResponseEntity save(@RequestBody InsInstructorCreateRequest instructorCreateRequest) {
+		return ResponseEntity.ok(RestResponse.of(instructorService.save(instructorCreateRequest)));
+	}
 
-    @PutMapping("/{id}")
-    public ResponseEntity update(@RequestBody InsInstructorUpdateRequest instructorUpdateRequest, @PathVariable Long id){
-        InsInstructorUpdateResponse instructorUpdateResponse = instructorService.update(instructorUpdateRequest, id);
-        return ResponseEntity.ok(RestResponse.of(instructorUpdateResponse));
-    }
-    @PutMapping("/change-password/{id}")
-    public ResponseEntity changePassword(@RequestBody UsrPasswordChangeRequest passwordChangeRequest, @PathVariable Long id){
-        instructorService.changePassword(passwordChangeRequest, id);
-        return ResponseEntity.ok(RestResponse.empty());
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity getById(@PathVariable Long id) {
+		InsInstructorGetResponse instructorGetResponse = instructorService.getById(id);
+		return ResponseEntity.ok(RestResponse.of(instructorGetResponse));
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id){
-        instructorService.deleteById(id);
-        return ResponseEntity.ok(RestResponse.empty());
-    }
+	@PutMapping("/{id}")
+	public ResponseEntity update(@RequestBody InsInstructorUpdateRequest instructorUpdateRequest,
+			@PathVariable Long id) {
+		InsInstructorUpdateResponse instructorUpdateResponse = instructorService.update(instructorUpdateRequest, id);
+		return ResponseEntity.ok(RestResponse.of(instructorUpdateResponse));
+	}
 
+	@PutMapping("/change-password/{id}")
+	public ResponseEntity changePassword(@RequestBody UsrPasswordChangeRequest passwordChangeRequest,
+			@PathVariable Long id) {
+		instructorService.changePassword(passwordChangeRequest, id);
+		return ResponseEntity.ok(RestResponse.empty());
+	}
 
+	@DeleteMapping("/{id}")
+	public ResponseEntity delete(@PathVariable Long id) {
+		instructorService.deleteById(id);
+		return ResponseEntity.ok(RestResponse.empty());
+	}
 
 }

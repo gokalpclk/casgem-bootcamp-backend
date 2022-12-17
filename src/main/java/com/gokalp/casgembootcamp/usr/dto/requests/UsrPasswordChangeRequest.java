@@ -14,8 +14,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UsrPasswordChangeRequest {
-    private String oldPassword;
-    private String newPassword;
-    private String confirmNewPassword;
+
+	private String oldPassword;
+
+	private String newPassword;
+
+	private String confirmNewPassword;
 
 }

@@ -11,7 +11,11 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 public class GenExceptionResponse {
-    private Date errorDate;
-    private String message;
-    private String description;
+
+	private Date errorDate;
+
+	private String message;
+
+	private String description;
+
 }

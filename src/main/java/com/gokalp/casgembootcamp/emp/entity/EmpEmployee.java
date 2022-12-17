@@ -17,9 +17,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "employee")
 public class EmpEmployee extends UsrUser {
-    @Enumerated(EnumType.STRING)
-    private Positions position;
 
-
+	@Enumerated(EnumType.STRING)
+	private Positions position;
 
 }

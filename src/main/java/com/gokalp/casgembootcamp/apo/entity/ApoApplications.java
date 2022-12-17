@@ -19,21 +19,21 @@ import javax.persistence.*;
 @Table(name = "applications")
 public class ApoApplications extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
+	@ManyToOne
+	@JoinColumn(name = "applicant_id")
+	private AppApplicant applicant;
 
-    @ManyToOne
-    @JoinColumn(name = "applicant_id")
-    private AppApplicant applicant;
+	@ManyToOne
+	@JoinColumn(name = "bootcamp_id")
+	private BooBootcamp bootcamp;
 
-    @ManyToOne
-    @JoinColumn(name = "bootcamp_id")
-    private BooBootcamp bootcamp;
+	@Column(name = "state")
+	@Enumerated(EnumType.STRING)
+	private ApoStates state;
 
-    @Column(name = "state")
-    @Enumerated(EnumType.STRING)
-    private ApoStates state;
 }

@@ -18,19 +18,20 @@ import java.util.Date;
 @Table(name = "blacklist")
 public class BlaBlacklist extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "date")
-    private Date date;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date")
+	private Date date;
 
-    @Column(name = "reason")
-    private String reason;
+	@Column(name = "reason")
+	private String reason;
 
-    @OneToOne
-    @JoinColumn(name = "applicant_id")
-    private AppApplicant applicant;
+	@OneToOne
+	@JoinColumn(name = "applicant_id")
+	private AppApplicant applicant;
+
 }

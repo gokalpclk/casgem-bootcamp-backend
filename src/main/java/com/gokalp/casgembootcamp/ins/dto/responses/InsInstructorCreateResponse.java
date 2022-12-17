@@ -7,5 +7,7 @@ import com.gokalp.casgembootcamp.usr.dto.responses.UsrUserCreateResponse;
  * @project casgem-bootcamp
  */
 public class InsInstructorCreateResponse extends UsrUserCreateResponse {
-    private String companyName;
+
+	private String companyName;
+
 }

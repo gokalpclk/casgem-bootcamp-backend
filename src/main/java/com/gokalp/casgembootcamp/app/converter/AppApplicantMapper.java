@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
  */
 @Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface AppApplicantMapper {
-    AppApplicantMapper INSTANCE = Mappers.getMapper(AppApplicantMapper.class);
 
+	AppApplicantMapper INSTANCE = Mappers.getMapper(AppApplicantMapper.class);
 
 }

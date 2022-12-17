@@ -9,7 +9,9 @@ import com.gokalp.casgembootcamp.gen.services.entityServices.BaseEntityService;
  * @project casgem-bootcamp
  */
 public class BooBootcampEntityService extends BaseEntityService<BooBootcamp, BooBootcampDao> {
-    public BooBootcampEntityService(BooBootcampDao dao) {
-        super(dao);
-    }
+
+	public BooBootcampEntityService(BooBootcampDao dao) {
+		super(dao);
+	}
+
 }

@@ -19,16 +19,19 @@ import java.util.List;
  */
 @Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface InsInstructorConverter {
-    InsInstructorConverter INSTANCE = Mappers.getMapper(InsInstructorConverter.class);
-    InsInstructor convertToInsInstructor (InsInstructorCreateRequest insInstructorCreateRequest);
 
-    InsInstructorCreateResponse convertToInsInstructorCreateResponse(InsInstructor insInstructor);
+	InsInstructorConverter INSTANCE = Mappers.getMapper(InsInstructorConverter.class);
 
-    List<InsInstructorGetAllResponse> convertToListOfInsInstructorGetAllResponse(List<InsInstructor> instructorList);
+	InsInstructor convertToInsInstructor(InsInstructorCreateRequest insInstructorCreateRequest);
 
-    InsInstructorGetResponse convertToInsInstructorGetResponse(InsInstructor insInstructor);
+	InsInstructorCreateResponse convertToInsInstructorCreateResponse(InsInstructor insInstructor);
 
-    InsInstructor convertToInsInstructor(InsInstructorUpdateRequest insInstructorUpdateRequest);
+	List<InsInstructorGetAllResponse> convertToListOfInsInstructorGetAllResponse(List<InsInstructor> instructorList);
 
-    InsInstructorUpdateResponse convertToInsInstructorUpdateResponse(InsInstructor insInstructor);
+	InsInstructorGetResponse convertToInsInstructorGetResponse(InsInstructor insInstructor);
+
+	InsInstructor convertToInsInstructor(InsInstructorUpdateRequest insInstructorUpdateRequest);
+
+	InsInstructorUpdateResponse convertToInsInstructorUpdateResponse(InsInstructor insInstructor);
+
 }

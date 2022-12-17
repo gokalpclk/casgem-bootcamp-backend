@@ -17,26 +17,30 @@ import java.util.Date;
 @NoArgsConstructor
 public class RestResponse<T> implements Serializable {
 
-    private T data;
-    private Date responseDate;
-    private boolean isSuccess;
-    private String message;
+	private T data;
 
-    public RestResponse(T data, boolean isSuccess) {
-        this.data = data;
-        this.isSuccess = isSuccess;
-        responseDate = new Date();
-    }
+	private Date responseDate;
 
-    public static <T> RestResponse<T> of(T t){
-        return new RestResponse<>(t,true);
-    }
+	private boolean isSuccess;
 
-    public static <T> RestResponse<T> error(T t){
-        return new RestResponse<>(t, false);
-    }
+	private String message;
 
-    public static <T> RestResponse<T> empty(){
-        return new RestResponse<>(null, false);
-    }
+	public RestResponse(T data, boolean isSuccess) {
+		this.data = data;
+		this.isSuccess = isSuccess;
+		responseDate = new Date();
+	}
+
+	public static <T> RestResponse<T> of(T t) {
+		return new RestResponse<>(t, true);
+	}
+
+	public static <T> RestResponse<T> error(T t) {
+		return new RestResponse<>(t, false);
+	}
+
+	public static <T> RestResponse<T> empty() {
+		return new RestResponse<>(null, false);
+	}
+
 }

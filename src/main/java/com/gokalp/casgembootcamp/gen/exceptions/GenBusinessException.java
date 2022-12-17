@@ -14,5 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequiredArgsConstructor
 @Data
 public class GenBusinessException extends RuntimeException {
-    private final BaseErrorMessage baseErrorMessage;
+
+	private final BaseErrorMessage baseErrorMessage;
+
 }

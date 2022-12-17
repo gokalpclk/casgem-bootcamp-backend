@@ -16,10 +16,11 @@ import java.util.Optional;
  * @author Gokalp on 14.12.2022
  * @project casgem-bootcamp
  */
-
+@Service
 public class EmpEmployeeEntityService extends BaseEntityService<EmpEmployee, EmpEmployeeDao> {
 
-    public EmpEmployeeEntityService(EmpEmployeeDao dao) {
-        super(dao);
-    }
+	public EmpEmployeeEntityService(EmpEmployeeDao dao) {
+		super(dao);
+	}
+
 }

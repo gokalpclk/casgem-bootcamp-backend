@@ -20,9 +20,11 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "instructor")
 public class InsInstructor extends UsrUser {
-    @Column(name = "company_name")
-    private String companyName;
 
-    @OneToMany(mappedBy = "instructor")
-    private List<BooBootcamp> bootcamps;
+	@Column(name = "company_name")
+	private String companyName;
+
+	@OneToMany(mappedBy = "instructor")
+	private List<BooBootcamp> bootcamps;
+
 }

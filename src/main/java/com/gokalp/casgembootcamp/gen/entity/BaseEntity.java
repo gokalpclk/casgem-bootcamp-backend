@@ -16,8 +16,9 @@ import java.io.Serializable;
 @Setter
 public abstract class BaseEntity implements BaseModel, Cloneable, Serializable {
 
-    private static final Long seralVersionUID = 1L;
+	private static final Long seralVersionUID = 1L;
 
-    @Embedded
-    private BaseAdditionalFields baseAdditionalFields;
+	@Embedded
+	private BaseAdditionalFields baseAdditionalFields;
+
 }

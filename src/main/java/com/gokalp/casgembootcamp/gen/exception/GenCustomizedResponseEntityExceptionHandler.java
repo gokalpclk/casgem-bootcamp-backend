@@ -22,56 +22,55 @@ import java.util.Date;
 @ControllerAdvice
 public class GenCustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler
-    public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest webRequest){
+	@ExceptionHandler
+	public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest webRequest) {
 
-        Date errorDate = new Date();
-        String message = ex.getMessage();
-        String description = webRequest.getDescription(false);
+		Date errorDate = new Date();
+		String message = ex.getMessage();
+		String description = webRequest.getDescription(false);
 
-        GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
-        RestResponse<Object> restResponse = RestResponse.error(genExceptionResponse);
-        restResponse.setMessage(message);
-        return new ResponseEntity<>(restResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+		GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
+		RestResponse<Object> restResponse = RestResponse.error(genExceptionResponse);
+		restResponse.setMessage(message);
+		return new ResponseEntity<>(restResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 
-    @ExceptionHandler
-    public final ResponseEntity<Object> handleAllGenBusinessException(GenBusinessException ex, WebRequest webRequest) {
-        Date errorDate = new Date();
-        String message = ex.getBaseErrorMessage().getMessage();
-        String description = webRequest.getDescription(false);
+	@ExceptionHandler
+	public final ResponseEntity<Object> handleAllGenBusinessException(GenBusinessException ex, WebRequest webRequest) {
+		Date errorDate = new Date();
+		String message = ex.getBaseErrorMessage().getMessage();
+		String description = webRequest.getDescription(false);
 
-        GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
-        RestResponse<GenExceptionResponse> restResponse = RestResponse.error(genExceptionResponse);
-        restResponse.setMessage(message);
-        return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
-    }
+		GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
+		RestResponse<GenExceptionResponse> restResponse = RestResponse.error(genExceptionResponse);
+		restResponse.setMessage(message);
+		return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
+	}
 
+	@ExceptionHandler
+	public final ResponseEntity<Object> handleItemNotFoundException(ItemNotFoundException ex, WebRequest webRequest) {
 
+		Date errorDate = new Date();
+		String message = ex.getBaseErrorMessage().getMessage();
+		String description = webRequest.getDescription(false);
 
-    @ExceptionHandler
-    public final ResponseEntity<Object> handleItemNotFoundException(ItemNotFoundException ex, WebRequest webRequest){
+		GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
+		RestResponse<Object> restResponse = RestResponse.error(genExceptionResponse);
+		restResponse.setMessage(message);
+		return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
+	}
 
-        Date errorDate = new Date();
-        String message = ex.getBaseErrorMessage().getMessage();
-        String description = webRequest.getDescription(false);
+	@ExceptionHandler
+	public final ResponseEntity<Object> handleIValidationException(ValidationException ex, WebRequest webRequest) {
 
-        GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
-        RestResponse<Object> restResponse = RestResponse.error(genExceptionResponse);
-        restResponse.setMessage(message);
-        return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
-    }
+		Date errorDate = new Date();
+		String message = ex.getBaseErrorMessage().getMessage();
+		String description = webRequest.getDescription(false);
 
-    @ExceptionHandler
-    public final ResponseEntity<Object> handleIValidationException(ValidationException ex, WebRequest webRequest){
+		GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
+		RestResponse<Object> restResponse = RestResponse.error(genExceptionResponse);
+		restResponse.setMessage(message);
+		return new ResponseEntity<>(restResponse, HttpStatus.BAD_REQUEST);
+	}
 
-        Date errorDate = new Date();
-        String message = ex.getBaseErrorMessage().getMessage();
-        String description = webRequest.getDescription(false);
-
-        GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
-        RestResponse<Object> restResponse = RestResponse.error(genExceptionResponse);
-        restResponse.setMessage(message);
-        return new ResponseEntity<>(restResponse, HttpStatus.BAD_REQUEST);
-    }
 }

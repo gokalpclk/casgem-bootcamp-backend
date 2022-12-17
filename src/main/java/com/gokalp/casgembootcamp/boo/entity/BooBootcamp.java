@@ -21,32 +21,32 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "bootcamp")
 public class BooBootcamp extends BaseEntity {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    @Column(name = "start_date")
-    @Temporal(TemporalType.DATE)
-    private Date startDate;
+	@Column(name = "start_date")
+	@Temporal(TemporalType.DATE)
+	private Date startDate;
 
-    @Column(name = "end_date")
-    @Temporal(TemporalType.DATE)
-    private Date endDate;
+	@Column(name = "end_date")
+	@Temporal(TemporalType.DATE)
+	private Date endDate;
 
-    @Column(name = "state")
-    @Enumerated(EnumType.STRING)
-    private BooStates state;
+	@Column(name = "state")
+	@Enumerated(EnumType.STRING)
+	private BooStates state;
 
-    @ManyToOne
-    @JoinColumn(name = "instructor_id")
-    private InsInstructor instructor;
+	@ManyToOne
+	@JoinColumn(name = "instructor_id")
+	private InsInstructor instructor;
 
-    @OneToMany(mappedBy = "bootcamp")
-    private List<ApoApplications> applications;
+	@OneToMany(mappedBy = "bootcamp")
+	private List<ApoApplications> applications;
 
 }

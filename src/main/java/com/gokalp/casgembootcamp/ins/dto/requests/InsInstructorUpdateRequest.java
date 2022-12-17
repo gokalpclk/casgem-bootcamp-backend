@@ -1,6 +1,7 @@
 package com.gokalp.casgembootcamp.ins.dto.requests;
 
 import com.gokalp.casgembootcamp.usr.dto.requests.UsrUserCreateRequest;
+import com.gokalp.casgembootcamp.usr.dto.requests.UsrUserUpdateRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class InsInstructorUpdateRequest extends UsrUserCreateRequest {
-    private String companyName;
+public class InsInstructorUpdateRequest extends UsrUserUpdateRequest {
+
+	private String companyName;
+
 }

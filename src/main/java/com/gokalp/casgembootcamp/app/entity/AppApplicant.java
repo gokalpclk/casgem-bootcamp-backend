@@ -19,12 +19,13 @@ import java.util.List;
 @Table(name = "applicant")
 public class AppApplicant extends UsrUser {
 
-    @Column(name = "about")
-    private String about;
+	@Column(name = "about")
+	private String about;
 
-    @OneToMany(mappedBy = "applicant")
-    private List<ApoApplications> applications;
+	@OneToMany(mappedBy = "applicant")
+	private List<ApoApplications> applications;
 
-    @OneToOne(mappedBy = "applicant")
-    private BlaBlacklist blacklist;
+	@OneToOne(mappedBy = "applicant")
+	private BlaBlacklist blacklist;
+
 }
