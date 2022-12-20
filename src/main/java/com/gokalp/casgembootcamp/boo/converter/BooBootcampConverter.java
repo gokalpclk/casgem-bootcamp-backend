@@ -7,11 +7,9 @@ import com.gokalp.casgembootcamp.boo.dto.responses.BooBootcampGetAllResponse;
 import com.gokalp.casgembootcamp.boo.dto.responses.BooBootcampGetResponse;
 import com.gokalp.casgembootcamp.boo.dto.responses.BooBootcampUpdateResponse;
 import com.gokalp.casgembootcamp.boo.entity.BooBootcamp;
-import com.gokalp.casgembootcamp.ins.entity.InsInstructor;
 import com.gokalp.casgembootcamp.ins.services.entityServices.InsInstructorEntityService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -24,12 +22,24 @@ import java.util.List;
 public interface BooBootcampConverter {
 
     BooBootcampConverter INSTANCE = Mappers.getMapper(BooBootcampConverter.class);
-    List<BooBootcampGetAllResponse> convertToListOfBooBootcampGetAllResponse(List<BooBootcamp> bootcampList);
+
+    @Mapping(target = "instructorId", source = "instructor.id")
+    @Mapping(target = "instructorFirstName", source = "instructor.firstName")
+    @Mapping(target = "instructorLastName", source = "instructor.lastName")
     BooBootcampGetResponse convertToBooBootcampGetResponse(BooBootcamp bootcamp);
 
-     @Mapping(target = "instructor.id", source = "instructorId")
+    //todo: list mapping
+    List<BooBootcampGetAllResponse> convertToListOfBooBootcampGetAllResponse(List<BooBootcamp> bootcampList);
+
+
+    @Mapping(target = "instructor.id", source = "instructorId")
     BooBootcamp convertToBooBootcamp(BooBootcampCreateRequest bootcampCreateRequest);
+
+    @Mapping(target = "instructor.id", source = "instructorId")
     BooBootcamp convertToBooBootcamp(BooBootcampUpdateRequest bootcampUpdateRequest);
+
+    @Mapping(target = "instructorId", source = "instructor.id")
     BooBootcampCreateResponse convertTooBooBootcampCreateResponse(BooBootcamp bootcamp);
+    @Mapping(target = "instructorId", source = "instructor.id")
     BooBootcampUpdateResponse convertTooBooBootcampUpdateResponse(BooBootcamp bootcamp);
 }

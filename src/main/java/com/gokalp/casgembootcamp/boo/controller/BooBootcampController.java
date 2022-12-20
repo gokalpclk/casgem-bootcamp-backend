@@ -1,8 +1,11 @@
 package com.gokalp.casgembootcamp.boo.controller;
 
 import com.gokalp.casgembootcamp.boo.dto.requests.BooBootcampCreateRequest;
+import com.gokalp.casgembootcamp.boo.dto.requests.BooBootcampUpdateRequest;
 import com.gokalp.casgembootcamp.boo.dto.responses.BooBootcampCreateResponse;
 import com.gokalp.casgembootcamp.boo.dto.responses.BooBootcampGetAllResponse;
+import com.gokalp.casgembootcamp.boo.dto.responses.BooBootcampGetResponse;
+import com.gokalp.casgembootcamp.boo.dto.responses.BooBootcampUpdateResponse;
 import com.gokalp.casgembootcamp.boo.services.BooBootcampService;
 import com.gokalp.casgembootcamp.gen.util.result.RestResponse;
 import lombok.AllArgsConstructor;
@@ -33,5 +36,21 @@ public class BooBootcampController {
         return ResponseEntity.ok(RestResponse.of(bootcampCreateResponse));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity getById(@PathVariable Long id){
+        BooBootcampGetResponse bootcampGetResponse = bootcampService.getById(id);
+        return ResponseEntity.ok(RestResponse.of(bootcampGetResponse));
+    }
 
+    @PutMapping("/{id}")
+    public ResponseEntity update(@RequestBody BooBootcampUpdateRequest bootcampUpdateRequest, @PathVariable Long id){
+        BooBootcampUpdateResponse bootcampUpdateResponse = bootcampService.update(bootcampUpdateRequest, id);
+        return ResponseEntity.ok(RestResponse.of(bootcampUpdateResponse));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id){
+        bootcampService.delete(id);
+        return ResponseEntity.ok(RestResponse.empty());
+    }
 }
