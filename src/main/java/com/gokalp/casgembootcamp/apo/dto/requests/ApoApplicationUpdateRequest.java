@@ -21,9 +21,9 @@ import javax.persistence.*;
 public class ApoApplicationUpdateRequest {
     private Long id;
 
-    private Long applicant;
+    private Long applicantId;
 
-    private Long bootcamp;
+    private Long bootcampId;
 
     private ApoStates state;
 }

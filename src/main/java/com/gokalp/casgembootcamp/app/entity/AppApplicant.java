@@ -1,6 +1,6 @@
 package com.gokalp.casgembootcamp.app.entity;
 
-import com.gokalp.casgembootcamp.apo.entity.ApoApplications;
+import com.gokalp.casgembootcamp.apo.entity.ApoApplication;
 import com.gokalp.casgembootcamp.bla.entity.BlaBlacklist;
 import com.gokalp.casgembootcamp.usr.entity.UsrUser;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ public class AppApplicant extends UsrUser {
 	private String about;
 
 	@OneToMany(mappedBy = "applicant")
-	private List<ApoApplications> applications;
+	private List<ApoApplication> applications;
 
 	@OneToOne(mappedBy = "applicant")
 	private BlaBlacklist blacklist;

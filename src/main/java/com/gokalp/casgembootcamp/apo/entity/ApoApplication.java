@@ -16,8 +16,8 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "applications")
-public class ApoApplications extends BaseEntity {
+@Table(name = "application")
+public class ApoApplication extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

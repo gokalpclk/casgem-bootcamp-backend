@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class InsInstructorEntityService extends BaseEntityService<InsInstructor, InsInstructorDao> {
-
 	public InsInstructorEntityService(InsInstructorDao dao) {
 		super(dao);
 	}

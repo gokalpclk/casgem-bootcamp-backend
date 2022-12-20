@@ -19,7 +19,7 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ApoApplicationCreateRequest {
-    private Long applicant;
-    private Long bootcamp;
+    private Long applicantId;
+    private Long bootcampId;
 
 }

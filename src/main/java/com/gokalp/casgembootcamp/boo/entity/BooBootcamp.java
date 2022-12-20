@@ -1,7 +1,6 @@
 package com.gokalp.casgembootcamp.boo.entity;
 
-import com.gokalp.casgembootcamp.apo.entity.ApoApplications;
-import com.gokalp.casgembootcamp.app.entity.AppApplicant;
+import com.gokalp.casgembootcamp.apo.entity.ApoApplication;
 import com.gokalp.casgembootcamp.boo.enums.BooStates;
 import com.gokalp.casgembootcamp.gen.entity.BaseEntity;
 import com.gokalp.casgembootcamp.ins.entity.InsInstructor;
@@ -47,6 +46,6 @@ public class BooBootcamp extends BaseEntity {
 	private InsInstructor instructor;
 
 	@OneToMany(mappedBy = "bootcamp")
-	private List<ApoApplications> applications;
+	private List<ApoApplication> applications;
 
 }

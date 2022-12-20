@@ -1,7 +1,7 @@
 package com.gokalp.casgembootcamp.apo.services.entityServices;
 
 import com.gokalp.casgembootcamp.apo.dao.ApoApplicationDao;
-import com.gokalp.casgembootcamp.apo.entity.ApoApplications;
+import com.gokalp.casgembootcamp.apo.entity.ApoApplication;
 import com.gokalp.casgembootcamp.gen.services.entityServices.BaseEntityService;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @project casgem-bootcamp
  */
 @Service
-public class ApoApplicationEntityService extends BaseEntityService<ApoApplications, ApoApplicationDao> {
+public class ApoApplicationEntityService extends BaseEntityService<ApoApplication, ApoApplicationDao> {
 
 	public ApoApplicationEntityService(ApoApplicationDao dao) {
 		super(dao);
