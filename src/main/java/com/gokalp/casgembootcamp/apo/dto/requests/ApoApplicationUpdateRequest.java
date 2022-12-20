@@ -19,7 +19,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApoApplicationUpdateRequest {
-    private Long id;
 
     private Long applicantId;
 
