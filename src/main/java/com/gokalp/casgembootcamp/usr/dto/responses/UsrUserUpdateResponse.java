@@ -31,6 +31,4 @@ public class UsrUserUpdateResponse {
 
 	private String password;
 
-	private String confirmPassword;
-
 }

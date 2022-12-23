@@ -21,7 +21,7 @@ import java.util.Date;
 @Getter
 public class BaseAdditionalFields {
 
-	@Column(name = "created_date")
+	@Column(name = "created_date", updatable = false)
 	@CreatedDate
 	private Date createDate;
 
@@ -29,7 +29,7 @@ public class BaseAdditionalFields {
 	@LastModifiedDate
 	private Date updateDate;
 
-	@Column(name = "created_by")
+	@Column(name = "created_by", updatable = false)
 	@CreatedBy
 	private Long createdBy;
 
