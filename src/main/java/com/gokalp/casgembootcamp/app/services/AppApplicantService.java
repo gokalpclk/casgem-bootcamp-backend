@@ -49,8 +49,9 @@ public class AppApplicantService {
         return applicantGetResponse;
     }
 
-    public AppApplicantUpdateResponse update(AppApplicantUpdateRequest applicantUpdateRequest){
+    public AppApplicantUpdateResponse update(AppApplicantUpdateRequest applicantUpdateRequest, Long id){
         AppApplicant applicant = AppApplicantConverter.INSTANCE.convertToAppApplicant(applicantUpdateRequest);
+        applicant.setId(id);
         applicant = applicantEntityService.save(applicant);
         AppApplicantUpdateResponse applicantUpdateResponse = AppApplicantConverter.INSTANCE.convertToAppApplicantUpdateResponse(applicant);
         return applicantUpdateResponse;
