@@ -29,6 +29,11 @@ public class UsrUser extends BaseEntity {
 	@Column(name = "last_name")
 	private String lastName;
 
+	@Column(name = "username")
+	private String username;
+
+
+
 	@Column(name = "date_of_birth")
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
