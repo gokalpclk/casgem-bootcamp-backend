@@ -1,6 +1,7 @@
 package com.gokalp.casgembootcamp.usr.entity;
 
 import com.gokalp.casgembootcamp.gen.entity.BaseEntity;
+import com.gokalp.casgembootcamp.sec.entity.SecRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,11 +31,6 @@ public class UsrUser extends BaseEntity {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "username")
-	private String username;
-
-
-
 	@Column(name = "date_of_birth")
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
@@ -46,5 +43,13 @@ public class UsrUser extends BaseEntity {
 
 	@Column(name = "password")
 	private String password;
+
+	@ManyToMany
+	@JoinTable(
+			name = "user_role",
+			joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+			inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "role_id")}
+	)
+	private List<SecRole> roles;
 
 }
