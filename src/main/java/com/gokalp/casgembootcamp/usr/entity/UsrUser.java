@@ -1,6 +1,7 @@
 package com.gokalp.casgembootcamp.usr.entity;
 
 import com.gokalp.casgembootcamp.gen.entity.BaseEntity;
+import com.gokalp.casgembootcamp.usr.enums.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,5 +42,9 @@ public class UsrUser extends BaseEntity {
 
 	@Column(name = "password")
 	private String password;
+
+	@Column(name = "authority")
+	@Enumerated(EnumType.STRING)
+	private Authority authority;
 
 }
