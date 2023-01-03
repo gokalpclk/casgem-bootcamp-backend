@@ -2,21 +2,16 @@ package com.gokalp.casgembootcamp.usr.entity;
 
 import com.gokalp.casgembootcamp.gen.entity.BaseEntity;
 import com.gokalp.casgembootcamp.usr.enums.Authority;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
 public class UsrUser extends BaseEntity {
 
 	@Id

@@ -85,7 +85,12 @@ public abstract class BaseEntityService<E extends BaseEntity, D extends JpaRepos
         return currentCustomerId;
     }
 
-    public JpaRepository getDao() {
+
+    public boolean existsById(Long id) {
+        return dao.existsById(id);
+    }
+
+    public D getDao() {
         return dao;
     }
 
