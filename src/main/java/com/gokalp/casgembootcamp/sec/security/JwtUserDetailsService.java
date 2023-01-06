@@ -1,5 +1,6 @@
 package com.gokalp.casgembootcamp.sec.security;
 
+
 import com.gokalp.casgembootcamp.usr.entity.UsrUser;
 import com.gokalp.casgembootcamp.usr.services.entityServices.UsrUserEntityService;
 import lombok.RequiredArgsConstructor;
@@ -9,8 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Gokalp on 3.01.2023
- * @project casgem-bootcamp
+ * @author Gokalp on 9/2/22
  */
 @Service
 @RequiredArgsConstructor
@@ -19,7 +19,8 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UsrUser user = userEntityService.findByEmail(username);
+        String email = username;
+        UsrUser user = userEntityService.findByEmail(email);
         return JwtUserDetails.create(user);
     }
 

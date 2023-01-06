@@ -1,46 +1,37 @@
 package com.gokalp.casgembootcamp.sec.security;
 
 import com.gokalp.casgembootcamp.usr.entity.UsrUser;
-import com.gokalp.casgembootcamp.usr.enums.Authority;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 /**
- * @author Gokalp on 3.01.2023
- * @project casgem-bootcamp
+ * @author Gokalp on 9/2/22
  */
-@Builder
-
-//@AllArgsConstructor
-//@RequiredArgsConstructor
 public class JwtUserDetails implements UserDetails {
-//    private final UsrUser user;
-
-
-
-    public Long id;
+    private Long id;
     private String username;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-
-    public static JwtUserDetails create(UsrUser user){
-        JwtUserDetails jwtUserDetails = JwtUserDetails.builder()
-                .id(user.getId())
-                .username(user.getEmail())
-                .password(user.getPassword())
-                .authorities(List.of(Authority.valueOf(user.getAuthority().toString())))
-                .build();
-        return jwtUserDetails;
+    private JwtUserDetails(Long id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.authorities = authorities;
     }
-    public Long getId() {
-        return id;
+
+    public static JwtUserDetails create(UsrUser usrUser) {
+        Long id = usrUser.getId();
+        String username = usrUser.getEmail().toString();
+        String password = usrUser.getPassword();
+        List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
+        grantedAuthorityList.add(new SimpleGrantedAuthority("user"));
+        return new JwtUserDetails(id, username, password, grantedAuthorityList);
     }
 
     @Override
@@ -76,5 +67,9 @@ public class JwtUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

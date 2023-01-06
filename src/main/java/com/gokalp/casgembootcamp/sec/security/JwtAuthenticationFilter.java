@@ -1,6 +1,7 @@
 package com.gokalp.casgembootcamp.sec.security;
 
-import lombok.RequiredArgsConstructor;
+
+import com.gokalp.casgembootcamp.sec.enums.EnumJwtConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,12 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author Gokalp on 3.01.2023
- * @project casgem-bootcamp
+ * @author Gokalp on 9/3/22
  */
-
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
     @Autowired
     private JwtTokenGenerator jwtTokenGenerator;
     @Autowired
@@ -30,32 +28,29 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = getToken(request);
-
         if (StringUtils.hasText(token)) {
             boolean isValid = jwtTokenGenerator.validateToken(token);
-
             if (isValid) {
                 Long userId = jwtTokenGenerator.findUserIdByToken(token);
                 UserDetails userDetails = jwtUserDetailsService.loadUserById(userId);
-
-                if (userDetails != null) {
+                if(userDetails != null){
                     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
                 }
             }
         }
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(request,response);
     }
 
     private String getToken(HttpServletRequest request) {
         String fullToken = request.getHeader("Authorization");
-
         String token = null;
         if (StringUtils.hasText(fullToken)) {
-            String bearer = "Bearer ";
-            if (fullToken.startsWith(bearer)) {
+            String bearer = EnumJwtConstant.BEARER.getConstant();
+            if(fullToken.startsWith(bearer)){
                 token = fullToken.substring(bearer.length());
             }
         }

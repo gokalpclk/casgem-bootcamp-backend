@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author Gokalp on 3.01.2023
- * @project casgem-bootcamp
+ * @author Gokalp on 9/3/22
  */
 @Component
-public class JwTAuthenticationEntryPoint implements AuthenticationEntryPoint {
+public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+
     }
 }
