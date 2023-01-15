@@ -1,15 +1,11 @@
 package com.gokalp.casgembootcamp.usr.entity;
 
 import com.gokalp.casgembootcamp.gen.entity.BaseEntity;
-import com.gokalp.casgembootcamp.sec.entity.SecRole;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.gokalp.casgembootcamp.sec.enums.Authority;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
+@Builder
 public class UsrUser extends BaseEntity {
 
 	@Id
@@ -44,12 +41,7 @@ public class UsrUser extends BaseEntity {
 	@Column(name = "password")
 	private String password;
 
-	@ManyToMany
-	@JoinTable(
-			name = "user_role",
-			joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-			inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "role_id")}
-	)
-	private List<SecRole> roles;
+	@Enumerated(EnumType.STRING)
+	private Authority role;
 
 }
