@@ -23,35 +23,39 @@ import java.util.List;
 public class ApoApplicationService {
     private final ApoApplicationEntityService applicationEntityService;
 
-    public List<ApoApplicationGetAllResponse> getAll(){
+    public List<ApoApplicationGetAllResponse> getAll() {
         List<ApoApplication> applicationList = applicationEntityService.findAll();
-        List<ApoApplicationGetAllResponse> applicationGetAllResponseList = ApoApplicationConverter.INSTANCE.convertToListOfApoApplicationGetAllResponse(applicationList);
+        List<ApoApplicationGetAllResponse> applicationGetAllResponseList = ApoApplicationConverter.INSTANCE.convertToListOfApoApplicationGetAllResponse(
+                applicationList);
         return applicationGetAllResponseList;
     }
 
-    public ApoApplicationCreateResponse create(ApoApplicationCreateRequest applicationCreateRequest){
+    public ApoApplicationCreateResponse create(ApoApplicationCreateRequest applicationCreateRequest) {
         //todo: add jwt
         ApoApplication application = ApoApplicationConverter.INSTANCE.convertToApoApplication(applicationCreateRequest);
         application = applicationEntityService.save(application);
-        ApoApplicationCreateResponse applicationCreateResponse = ApoApplicationConverter.INSTANCE.convertToApoApplicationCreateResponse(application);
+        ApoApplicationCreateResponse applicationCreateResponse = ApoApplicationConverter.INSTANCE.convertToApoApplicationCreateResponse(
+                application);
         return applicationCreateResponse;
     }
 
-    public ApoApplicationUpdateResponse update(ApoApplicationUpdateRequest applicationUpdateRequest, Long id){
+    public ApoApplicationUpdateResponse update(ApoApplicationUpdateRequest applicationUpdateRequest, Long id) {
         ApoApplication application = ApoApplicationConverter.INSTANCE.convertToApoApplication(applicationUpdateRequest);
         application.setId(id);
         application = applicationEntityService.save(application);
-        ApoApplicationUpdateResponse applicationUpdateResponse = ApoApplicationConverter.INSTANCE.convertToAppApplicantUpdateResponse(application);
+        ApoApplicationUpdateResponse applicationUpdateResponse = ApoApplicationConverter.INSTANCE.convertToAppApplicantUpdateResponse(
+                application);
         return applicationUpdateResponse;
     }
 
-    public ApoApplicationGetResponse getById(Long id){
+    public ApoApplicationGetResponse getById(Long id) {
         ApoApplication application = applicationEntityService.getByIdWithControl(id);
-        ApoApplicationGetResponse applicationGetResponse = ApoApplicationConverter.INSTANCE.convertToApoApplicationGetResponse(application);
+        ApoApplicationGetResponse applicationGetResponse = ApoApplicationConverter.INSTANCE.convertToApoApplicationGetResponse(
+                application);
         return applicationGetResponse;
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         ApoApplication application = applicationEntityService.getByIdWithControl(id);
         applicationEntityService.delete(application);
     }

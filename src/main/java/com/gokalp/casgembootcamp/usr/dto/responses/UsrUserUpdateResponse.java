@@ -1,10 +1,13 @@
 package com.gokalp.casgembootcamp.usr.dto.responses;
 
+import com.gokalp.casgembootcamp.sec.enums.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Date;
 
 /**
@@ -30,5 +33,8 @@ public class UsrUserUpdateResponse {
 	private String email;
 
 	private String password;
+
+	@Enumerated(EnumType.STRING)
+	private Authority role;
 
 }

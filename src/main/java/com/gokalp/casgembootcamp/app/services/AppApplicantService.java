@@ -9,9 +9,9 @@ import com.gokalp.casgembootcamp.app.dto.responses.AppApplicantGetResponse;
 import com.gokalp.casgembootcamp.app.dto.responses.AppApplicantUpdateResponse;
 import com.gokalp.casgembootcamp.app.entity.AppApplicant;
 import com.gokalp.casgembootcamp.app.services.entityServices.AppApplicantEntityService;
-import com.gokalp.casgembootcamp.emp.entity.EmpEmployee;
 import com.gokalp.casgembootcamp.gen.enums.ValidationErrorMessage;
 import com.gokalp.casgembootcamp.gen.exceptions.ValidationException;
+import com.gokalp.casgembootcamp.sec.enums.Authority;
 import com.gokalp.casgembootcamp.usr.dto.requests.UsrPasswordChangeRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,6 +38,7 @@ public class AppApplicantService {
         //todo: Check control user registered before
         confirmPassword(appApplicantCreateRequest.getPassword(),appApplicantCreateRequest.getConfirmPassword());
         AppApplicant appApplicant = AppApplicantConverter.INSTANCE.convertToAppApplicant(appApplicantCreateRequest);
+        appApplicant.setRole(Authority.APPLICANT);
         appApplicant = applicantEntityService.save(appApplicant);
         AppApplicantCreateResponse applicantCreateResponse = AppApplicantConverter.INSTANCE.convertToAppApplicantCreateResponse(appApplicant);
         return applicantCreateResponse;

@@ -28,7 +28,6 @@ public class JwtUserDetailsConverter implements Converter<Jwt, AbstractAuthentic
     public AbstractAuthenticationToken  convert(final Jwt source) {
         final UsrUser user = tokenService.getUser(source);
         return new UsernamePasswordAuthenticationToken(
-                //todo: maybe
                 user.getEmail(), user.getPassword(), List.of(new SimpleGrantedAuthority(user.getRole().getAuthority())));
     }
 }

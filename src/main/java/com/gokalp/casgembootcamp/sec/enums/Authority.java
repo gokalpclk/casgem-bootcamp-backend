@@ -1,6 +1,5 @@
 package com.gokalp.casgembootcamp.sec.enums;
 
-import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 
 /**
@@ -12,7 +11,7 @@ public enum Authority implements GrantedAuthority {
     ADMIN,
     EMPLOYEE,
     INSTRUCTOR,
-    APPLICANTS;
+    APPLICANT;
 
     @Override
     public String getAuthority() {
